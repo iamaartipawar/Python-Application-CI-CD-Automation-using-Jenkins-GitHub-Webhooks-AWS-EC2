@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%9A%80-python-application-cicd-automation-using-jenkins-github-webhook--aws-ec2"><strong>🚀 Python Application CI/CD Automation using Jenkins, GitHub Webhook &amp; AWS EC2</strong></h1>
+<h2 id="%F0%9F%93%8C-project-overview"><strong>📌 Project Overview</strong></h2>
+<p>This project demonstrates the automated deployment of a Python Flask application using <strong>Jenkins CI/CD Pipeline, GitHub Webhooks, and AWS EC2</strong>.</p>
+<p>Whenever new code is pushed to the GitHub repository, a webhook triggers Jenkins automatically. Jenkins checks out the latest source code, installs Python dependencies, creates a virtual environment, validates the application, and deploys it to a target EC2 instance through SSH. The pipeline then starts the application and performs a health check to verify that the deployment is working.</p>
+<p>The project also includes a responsive web dashboard built using HTML and CSS to demonstrate the GitHub-to-Jenkins automation workflow.</p>
+<h2 id="%F0%9F%8E%AF-project-objectives"><strong>🎯 Project Objectives</strong></h2>
+<ul>
+<li>Automate application deployment using Jenkins.</li>
+<li>Trigger builds automatically through GitHub Webhooks.</li>
+<li>Configure a Jenkins pipeline using a <code>Jenkinsfile</code>.</li>
+<li>Install Python dependencies in an isolated virtual environment.</li>
+<li>Validate Python application code before deployment.</li>
+<li>Deploy the application to an AWS EC2 target server using SSH.</li>
+<li>Verify application availability after deployment.</li>
+</ul>
+<h2 id="%F0%9F%8F%97%EF%B8%8F-architecture-flow--diagram"><strong>🏗️ Architecture Flow &amp; Diagram</strong></h2>
+<pre class="hljs"><code><div>       Developer
+           |
+           | Git Push
+           v
+      GitHub Repository
+           |
+           | Webhook (HTTP POST)
+           v
+       Jenkins Server
+           |
+           v
+     Checkout Source Code
+           |
+           v
+      Install Python
+           |
+           v
+   Create Virtual Environment
+           |
+           v
+    Install Dependencies
+           |
+           v
+     Build / Validate
+           |
+           v
+   SSH to Target EC2 Server
+           |
+           v
+     Deploy Flask Application
+           |
+           v
+      Start Application
+           |
+           v
+      Verify Application
+           |
+           v
+     Application Dashboard
+</div></code></pre>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/Architec.png" alt="alt text"></p>
+<h2 id="%F0%9F%9B%A0%EF%B8%8F-technologies-used"><strong>🛠️ Technologies Used</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud Platform</td>
+<td>AWS</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Amazon EC2</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>Jenkins</td>
+</tr>
+<tr>
+<td>Version Control</td>
+<td>Git, GitHub</td>
+</tr>
+<tr>
+<td>Automation</td>
+<td>GitHub Webhooks</td>
+</tr>
+<tr>
+<td>Programming Language</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>Web Framework</td>
+<td>Flask</td>
+</tr>
+<tr>
+<td>Web Technologies</td>
+<td>HTML, CSS</td>
+</tr>
+<tr>
+<td>Python Environment</td>
+<td>venv, pip</td>
+</tr>
+<tr>
+<td>Application Server</td>
+<td>Gunicorn</td>
+</tr>
+<tr>
+<td>Remote Deployment</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>Amazon Linux</td>
+</tr>
+<tr>
+<td>Pipeline Configuration</td>
+<td>Jenkinsfile</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E2%98%81%EF%B8%8F-aws-infrastructure"><strong>☁️ AWS Infrastructure</strong></h2>
+<p>The project uses two EC2 instances:</p>
+<ul>
+<li><strong>Jenkins Master:</strong> Runs Jenkins and executes the CI/CD pipeline.</li>
+<li><strong>Target Server:</strong> Receives the application deployment and runs the Python application.</li>
+</ul>
+<p>SSH is used for communication between the Jenkins server and the target server.</p>
+<p>The target server's security group must allow SSH access from the Jenkins server, and the application port must be accessible for testing the deployed application.</p>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/13.png" alt="alt text"></p>
+<h2 id="%F0%9F%93%82-repository-structure"><strong>📂 Repository Structure</strong></h2>
+<pre class="hljs"><code><div>Python-application/
+│
+├── static/
+│   └── CSS, JavaScript and static assets
+│
+├── templates/
+│   └── index.html
+│
+├── tests/
+│   └── Application tests
+│
+├── app.py
+├── Jenkinsfile
+├── requirements.txt
+└── README.md
+</div></code></pre>
+<h2 id="configure-github-webhook"><strong>Configure GitHub Webhook</strong></h2>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/1.png" alt="alt text"></p>
+<p>In the GitHub repository, open <strong>Settings → Webhooks → Add webhook</strong>.</p>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/2.png" alt="alt text"></p>
+<p>Configure the webhook payload URL to point to your Jenkins webhook endpoint, select the appropriate content type, and enable push events.</p>
+<p>Ensure Jenkins is reachable from GitHub through a properly configured and secured endpoint.</p>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/3.png" alt="alt text"></p>
+<h2 id="%F0%9F%9A%80-how-to-run-the-project"><strong>🚀 How to Run the Project</strong></h2>
+<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<ul>
+<li>AWS account with EC2 instances.</li>
+<li>Jenkins installed and configured.</li>
+<li>GitHub repository with webhook access to Jenkins.</li>
+<li>Python 3 and pip.</li>
+<li>SSH connectivity between the Jenkins server and target server.</li>
+<li>Required SSH credentials configured securely in Jenkins.</li>
+</ul>
+<h3 id="step-1-configure-jenkins"><strong>Step 1: Configure Jenkins</strong></h3>
+<ol>
+<li>
+<p>Create a Jenkins Pipeline job.</p>
+</li>
+<li>
+<p>Select <strong>Pipeline script from SCM</strong>.</p>
+</li>
+<li>
+<p>Choose Git as the source control system.</p>
+</li>
+<li>
+<p>Enter the repository URL:</p>
+<p><code>https://github.com/iamaartipawar/Python-application.git</code></p>
+</li>
+<li>
+<p>Select the <code>main</code> branch.</p>
+</li>
+<li>
+<p>Set the script path to <code>Jenkinsfile</code>.</p>
+</li>
+<li>
+<p>Configure the required SSH credentials in Jenkins.</p>
+</li>
+</ol>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/4.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/5.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/6.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/7.png" alt="alt text"></p>
+<h3 id="step-2-clone-the-repository"><strong>Step 2: Clone the Repository</strong></h3>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/iamaartipawar/Python-application.git
+<span class="hljs-built_in">cd</span> Python-application
+</div></code></pre>
+<h3 id="step-3-trigger-deployment"><strong>Step 3: Trigger Deployment</strong></h3>
+<pre class="hljs"><code><div>git add .
+git commit -m <span class="hljs-string">&quot;Update application&quot;</span>
+git push origin main
+</div></code></pre>
+<p>Make simple change first then push:
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/8.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/9.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/10.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/11.png" alt="alt text"></p>
+<p>Then check your pipeline automatically run</p>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/12.png" alt="alt text"></p>
+<p>Push a new commit to the repository:
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/17.png" alt="alt text">
+<img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/18.png" alt="alt text"></p>
+<p>Again check your second change is run automatically</p>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/15.png" alt="alt text"></p>
+<p>GitHub sends the push event to Jenkins, which starts the configured pipeline automatically.</p>
+<h3 id="step-4-run-your-target-server-ip5000"><strong>Step 4: Run your target server IP:5000</strong></h3>
+<p><img src="file:///c:/Workspace/DevOps/Jenkins/Webhook/images/16.png" alt="alt text"></p>
+<h2 id="%E2%9A%99%EF%B8%8F-jenkins-pipeline-stages"><strong>⚙️ Jenkins Pipeline Stages</strong></h2>
+<p>The pipeline is divided into the following stages:</p>
+<h3 id="1-checkout"><strong>1. Checkout</strong></h3>
+<p>Retrieves the latest application source code from the GitHub repository.</p>
+<h3 id="2-install-python"><strong>2. Install Python</strong></h3>
+<p>Checks and installs Python 3 and pip on the Jenkins environment when required.</p>
+<h3 id="3-create-virtual-environment"><strong>3. Create Virtual Environment</strong></h3>
+<p>Creates an isolated Python virtual environment to manage application dependencies.</p>
+<h3 id="4-install-dependencies"><strong>4. Install Dependencies</strong></h3>
+<p>Upgrades pip and installs the packages listed in <code>requirements.txt</code>, including Flask and Gunicorn.</p>
+<h3 id="5-build--validate"><strong>5. Build / Validate</strong></h3>
+<p>Validates the Python application using Python's compilation check before deployment.</p>
+<pre class="hljs"><code><div>./venv/bin/python -m py_compile app.py
+</div></code></pre>
+<h3 id="6-deploy-to-target-server"><strong>6. Deploy to Target Server</strong></h3>
+<p>Connects to the target EC2 instance using SSH and prepares the application directory for deployment.</p>
+<h3 id="7-setup-application-on-target"><strong>7. Setup Application on Target</strong></h3>
+<p>Transfers the application files and prepares the Python environment on the target server.</p>
+<h3 id="8-start-application"><strong>8. Start Application</strong></h3>
+<p>Starts the deployed Flask application using the configured application startup process.</p>
+<h3 id="9-verify-application"><strong>9. Verify Application</strong></h3>
+<p>Performs a health check to confirm that the deployed application is responding as expected.</p>
+<h3 id="10-post-actions"><strong>10. Post Actions</strong></h3>
+<p>Displays the pipeline completion or failure status in the Jenkins console output.</p>
+<h2 id="%F0%9F%94%94-github-webhook-integration"><strong>🔔 GitHub Webhook Integration</strong></h2>
+<p>GitHub Webhooks connect the repository with Jenkins and automate pipeline execution.</p>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>A developer updates the application code.</li>
+<li>The changes are committed and pushed to GitHub.</li>
+<li>GitHub sends a webhook event to Jenkins.</li>
+<li>Jenkins detects the event and starts the pipeline.</li>
+<li>The pipeline executes the configured deployment stages.</li>
+</ol>
+<p>This reduces the need to start every deployment manually.</p>
+<h2 id="%E2%9C%85-results"><strong>✅ Results</strong></h2>
+<p>The project demonstrates:</p>
+<ul>
+<li>GitHub push-based pipeline triggering.</li>
+<li>Automated source code checkout.</li>
+<li>Python environment creation and dependency installation.</li>
+<li>Application syntax validation.</li>
+<li>SSH-based deployment to an EC2 target server.</li>
+<li>Application startup and health-check stages.</li>
+<li>Jenkins Stage View for monitoring pipeline execution.</li>
+<li>A responsive dashboard demonstrating the automation workflow.</li>
+</ul>
+<h2 id="%F0%9F%93%9A-key-learnings"><strong>📚 Key Learnings</strong></h2>
+<p>Through this project, I gained practical experience with:</p>
+<ul>
+<li>CI/CD pipeline implementation using Jenkins.</li>
+<li>GitHub webhook integration.</li>
+<li>Jenkins Pipeline as Code using a <code>Jenkinsfile</code>.</li>
+<li>Python application dependency management.</li>
+<li>AWS EC2 infrastructure and remote server access.</li>
+<li>SSH-based application deployment.</li>
+<li>Pipeline stage monitoring and troubleshooting.</li>
+<li>Automating repetitive deployment tasks.</li>
+</ul>
+<h2 id="%F0%9F%94%AE-future-improvements"><strong>🔮 Future Improvements</strong></h2>
+<ul>
+<li>Add automated unit tests before deployment.</li>
+<li>Integrate Docker for containerized application deployment.</li>
+<li>Add notifications for pipeline success and failure.</li>
+<li>Improve application monitoring and centralized logging.</li>
+<li>Configure HTTPS and secure the webhook endpoint.</li>
+<li>Add automated rollback for failed deployments.</li>
+</ul>
+<h2 id="%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB-author"><strong>👩‍💻 Author</strong></h2>
+<p><strong>Aarti Pawar</strong></p>
+<p>Aspiring DevOps Engineer | Learning AWS, Jenkins, Docker &amp; CI/CD Automation</p>
+
+</body>
+</html>
